@@ -4,7 +4,7 @@ using namespace std;
 
 /*
 	左闭右开区间写法: right = n, while (left < right), right = mid;
-	左闭右开区间写法: right = n - 1, while (left <= right), right = mid - 1;
+	左闭右闭区间写法: right = n - 1, while (left <= right), right = mid - 1;
 	建议联想到 nums 只有一个元素的情况
 */
 

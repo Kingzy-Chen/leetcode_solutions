@@ -33,6 +33,6 @@ int main()
 {
 	vector<int> nums = {-1, 0, 3, 5, 9, 12};
 	int target = 9;
-	int res = search(nums, target);
-	cout << res << endl;
+	int ans = search(nums, target);
+	cout << ans << endl;
 }

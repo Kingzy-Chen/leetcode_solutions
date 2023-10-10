@@ -19,7 +19,7 @@ int removeElement_v1(vector<int>& nums, int val)
 		while (left <= right && nums[left] != val) {
 			left++;
 		}
-		// 用右侧元素覆盖左侧元素
+		// 用右边元素覆盖左边元素
 		if (left <= right) {
 			nums[left] = nums[right];
 			left++;
@@ -54,20 +54,20 @@ int removeElement_v2(vector<int>& nums, int val)
 
 int main()
 {
-	vector<int> nums1 = {0, 1, 2, 2, 3, 0, 4, 2};
-	int val1 = 2;
-	int ans1 = removeElement_v1(nums1, val1);
+	vector<int> nums_1 = {0, 1, 2, 2, 3, 0, 4, 2};
+	int val_1 = 2;
+	int ans_1 = removeElement_v1(nums_1, val_1);
 
-	cout << ans1 << endl;
-	for (int i = 0; i < ans1; i++) cout << nums1[i] << " ";
+	cout << ans_1 << endl;
+	for (int i = 0; i < ans_1; i++) cout << nums_1[i] << " ";
 	cout << endl;
 
-	vector<int> nums2 = {3, 2, 2, 3};
-	int val2 = 3;
-	int ans2 = removeElement_v1(nums2, val2);
+	vector<int> nums_2 = {3, 2, 2, 3};
+	int val_2 = 3;
+	int ans_2 = removeElement_v2(nums_2, val_2);
 
-	cout << ans2 << endl;
-	for (int i = 0; i < ans2; i++) cout << nums2[i] << " ";
+	cout << ans_2 << endl;
+	for (int i = 0; i < ans_2; i++) cout << nums_2[i] << " ";
 	cout << endl;
 
 	return 0;

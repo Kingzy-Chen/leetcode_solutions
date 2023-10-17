@@ -33,5 +33,6 @@ int main()
 	vector<int> ans = sortedSquares(nums);
 	for (auto t: ans) cout << t << " ";
 	cout << endl;
+
 	return 0;
 }

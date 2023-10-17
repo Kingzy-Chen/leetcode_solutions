@@ -27,7 +27,7 @@ int removeElement_v1(vector<int>& nums, int val)
 		}
 	}
 
-	// 最终 left 左边均为数组剩余元素
+	// 最终 left 左边为数组剩余元素
 	return left;
 }
 
@@ -47,7 +47,7 @@ int removeElement_v2(vector<int>& nums, int val)
 		}
 	}
 
-	// 最终 slow 左边均为数组剩余元素
+	// 最终 slow 左边为数组剩余元素
 	return slow;
 }
 

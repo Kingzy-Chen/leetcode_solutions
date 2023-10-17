@@ -10,12 +10,12 @@ bool isPerfectSquare(int num)
 
 	while (left <= right) 
 	{
-		int mid = (left + right) / 2;
+		int mid = (right - left) / 2 + left;
 
-		if (mid > (double)num / mid) {
+		if ((long long)mid * mid > num) {  // mid * mid 用 int 会导致溢出
 			right = mid - 1;
 		}
-		else if (mid < (double)num / mid) {
+		else if ((long long) mid * mid < num) {
 			left = mid + 1;
 		}
 		else return true;

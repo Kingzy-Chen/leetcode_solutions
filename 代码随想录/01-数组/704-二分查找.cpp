@@ -15,7 +15,7 @@ int search(vector<int>& nums, int target)
 	int right = n - 1;
 
 	while (left <= right) {
-		int mid = (left + right) / 2;
+		int mid = (right - left) / 2 + left;  // 防止溢出, 等同于 (left + right) / 2
 
 		if (nums[mid] > target) {
 			right = mid - 1;
@@ -35,4 +35,6 @@ int main()
 	int target = 9;
 	int ans = search(nums, target);
 	cout << ans << endl;
+
+	return 0;
 }

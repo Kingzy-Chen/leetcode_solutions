@@ -10,7 +10,7 @@ int searchInsert(vector<int>& nums, int target)
 	int right = n - 1;
 
 	while (left <= right) {
-		int mid = (left + right) / 2;
+		int mid = (right - left) / 2 + left;
 
 		if (target > nums[mid]) {
 			left = mid + 1;

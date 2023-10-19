@@ -36,7 +36,7 @@ int getLeftBorder(vector<int>& nums, int target)
     while (left <= right)
     {
         int mid = (right - left) / 2 + left;
-        
+            
         // 左边界 k 是满足 k < target 的最大 k 值
         if (nums[mid] >= target) {
             right = mid - 1;
@@ -48,6 +48,7 @@ int getLeftBorder(vector<int>& nums, int target)
     }
     return border;
 }
+
 
 int getRightBorder(vector<int>& nums, int target)
 {

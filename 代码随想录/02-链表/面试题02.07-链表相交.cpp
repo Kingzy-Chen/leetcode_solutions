@@ -40,7 +40,7 @@ void printList(ListNode* head)
 }
 
 
-ListNode *getIntersectionNode_v1(ListNode *headA, ListNode *headB) 
+ListNode* getIntersectionNode_v1(ListNode *headA, ListNode *headB) 
 {
 	ListNode* dummyA = new ListNode(-1, headA);
 	ListNode* dummyB = new ListNode(-1, headB);
@@ -71,7 +71,7 @@ ListNode *getIntersectionNode_v1(ListNode *headA, ListNode *headB)
 }
 
 
-ListNode *getIntersectionNode_v2(ListNode *headA, ListNode *headB) 
+ListNode* getIntersectionNode_v2(ListNode *headA, ListNode *headB) 
 {
 	ListNode* dummyA = new ListNode(-1, headA);
 	ListNode* dummyB = new ListNode(-1, headB);

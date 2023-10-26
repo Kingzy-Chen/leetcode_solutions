@@ -5,7 +5,7 @@ using namespace std;
 
 class MyLinkedList {
 public:
-	// 定义链表
+    // 定义链表
     struct ListNode {
         int val;
         ListNode* next;

@@ -3,6 +3,10 @@
 #include <vector>
 using namespace std;
 
+/*
+	思路: 类似于 1-两数之和,
+	但需要两两数组来遍历, 将数值和作为 key, 将数值和出现的次数作为 value
+*/
 
 int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) 
 {

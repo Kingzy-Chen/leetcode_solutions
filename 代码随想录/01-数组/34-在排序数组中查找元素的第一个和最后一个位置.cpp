@@ -87,15 +87,15 @@ vector<int> searchRange_v2(vector<int>& nums, int target)
 
 int main()
 {
-    vector<int> nums_1 = {3, 6, 6, 6, 7};
-    int target_1 = 6;
-    vector<int> ans_1 = searchRange_v1(nums_1, target_1);
-    cout << ans_1[0] << " " << ans_1[1] << endl;
+    vector<int> nums1 = {3, 6, 6, 6, 7};
+    int target1 = 6;
+    vector<int> ans1 = searchRange_v1(nums1, target1);
+    cout << ans1[0] << " " << ans1[1] << endl;
 
-    vector<int> nums_2 = {4, 5, 6, 7, 7, 9};
-    int target_2 = 7;
-    vector<int> ans_2 = searchRange_v2(nums_2, target_2);
-    cout << ans_2[0] << " " << ans_2[1] << endl;
+    vector<int> nums2 = {4, 5, 6, 7, 7, 9};
+    int target2 = 7;
+    vector<int> ans2 = searchRange_v2(nums2, target2);
+    cout << ans2[0] << " " << ans2[1] << endl;
 
     return 0;
 }

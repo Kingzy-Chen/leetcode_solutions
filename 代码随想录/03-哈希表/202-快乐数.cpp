@@ -20,6 +20,7 @@ bool isHappy(int n)
 			sum += pow(a, 2);
 		}
 		N = sum;
+
 		if (s.find(N) != s.end()) return false;  // 说明进入无限循环
 		else s.insert(N);
 	}

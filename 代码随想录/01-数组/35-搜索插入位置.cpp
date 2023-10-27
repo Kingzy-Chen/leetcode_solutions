@@ -28,15 +28,15 @@ int searchInsert(vector<int>& nums, int target)
 
 int main()
 {
-	vector<int> nums_1 = {1, 3, 5, 6};
-	int target_1 = 5;
-	int ans_1 = searchInsert(nums_1, target_1);
-	cout << ans_1 << endl;
+	vector<int> nums1 = {1, 3, 5, 6};
+	int target1 = 5;
+	int ans1 = searchInsert(nums1, target1);
+	cout << ans1 << endl;
 
-	vector<int> nums_2 = {1, 3, 5, 6};
-	int target_2 = 2;
-	int ans_2 = searchInsert(nums_2, target_2);
-	cout << ans_2 << endl;
+	vector<int> nums2 = {1, 3, 5, 6};
+	int target2 = 2;
+	int ans2 = searchInsert(nums2, target2);
+	cout << ans2 << endl;
 
 	return 0;
 }

@@ -66,15 +66,15 @@ int minSubArrayLen_v2(int target, vector<int>& nums)
 
 int main()
 {
-	int target_1 = 7;
-	vector<int> nums_1 = {2, 3, 1, 2, 4, 3};
-	int ans_1 = minSubArrayLen_v1(target_1, nums_1);
-	cout << ans_1 << endl;
+	int target1 = 7;
+	vector<int> nums1 = {2, 3, 1, 2, 4, 3};
+	int ans1 = minSubArrayLen_v1(target1, nums1);
+	cout << ans1 << endl;
 
-	int target_2 = 4;
-	vector<int> nums_2 = {1, 4, 4};
-	int ans_2 = minSubArrayLen_v2(target_2, nums_2);
-	cout << ans_2 << endl;
+	int target2 = 4;
+	vector<int> nums2 = {1, 4, 4};
+	int ans2 = minSubArrayLen_v2(target2, nums2);
+	cout << ans2 << endl;
 
 	return 0;
 }

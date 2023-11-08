@@ -49,6 +49,7 @@ int getLeftBorder(vector<int>& nums, int target)
     return border;
 }
 
+
 int getRightBorder(vector<int>& nums, int target)
 {
     int n = nums.size();

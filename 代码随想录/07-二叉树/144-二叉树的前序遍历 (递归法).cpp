@@ -47,9 +47,9 @@ TreeNode* initTree(vector<int>& nums)
 void traversal(TreeNode* root, vector<int>& ans)
 {
 	if (root == nullptr) return;
-	ans.push_back(root->val);
-	traversal(root->left, ans);
-	traversal(root->right, ans);
+	ans.push_back(root->val);      // 中
+	traversal(root->left, ans);    // 左
+	traversal(root->right, ans);   // 右
 }
 
 

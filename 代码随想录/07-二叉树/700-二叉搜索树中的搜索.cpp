@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 using namespace std;
 
 
@@ -63,38 +62,28 @@ void printTree(TreeNode* root)
 }
 
 
-TreeNode* constructMaximumBinaryTree(vector<int>& nums) 
+TreeNode* searchBST(TreeNode* root, int val)
 {
-	// 找到最大值在数组中的位置
-	int maxIdx = -1;
-	int maxVal = -1;
-	for (int i = 0; i < nums.size(); i++) {
-		if (nums[i] > maxVal) {
-			maxVal = nums[i];
-			maxIdx = i;
-		}
-	}
+	if (root == nullptr) return nullptr;
+	if (root->val == val) return root;
 
-	// 构造根节点
-	TreeNode* root = new TreeNode(maxVal);
-
-	if (maxIdx > 0) {
-		vector<int> leftnums(nums.begin(), nums.begin() + maxIdx);  // 切割数组, 最大值左侧子数组构造左孩子树
-		root->left = constructMaximumBinaryTree(leftnums);
-	}
-	if (maxIdx < nums.size() - 1) {
-		vector<int> rightnums(nums.begin() + maxIdx + 1, nums.end());  // 切割数组, 最大值右侧子数组构造右孩子树
-		root->right = constructMaximumBinaryTree(rightnums);
-	}
-	return root;
+	if (root->val > val) return searchBST(root->left, val);
+	if (root->val < val) return searchBST(root->right, val);
+	return nullptr;
 }
 
 
 int main()
 {
-	vector<int> nums = {3, 2, 1, 6, 0, 5};
-	TreeNode* root = constructMaximumBinaryTree(nums);
+	vector<int> nums = {4, 2, 7, 1, 3};
+	TreeNode* root = initTree(nums);
+	int val1 = 2;
+	int val2 = 5;
 
-	printTree(root);
+	printTree(searchBST(root, val1));
+	cout << endl;
+	printTree(searchBST(root, val2));
+	cout << endl;
+
 	return 0;
 }

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <queue>
 using namespace std;
 
 
@@ -43,47 +43,42 @@ TreeNode* initTree(vector<int>& nums)
 	return nodes[0];
 }
 
-// 前序遍历输出二叉树
-void postorderTraversal(TreeNode* root, vector<int>& ans)
-{
-	if (root == nullptr) return;
-	ans.push_back(root->val);      // 中
-	postorderTraversal(root->left, ans);    // 左
-	postorderTraversal(root->right, ans);   // 右
-}
 
-// 打印二叉树
-void printTree(TreeNode* root)
+bool traversal(TreeNode* cur, int curSum, int targetSum)
 {
-	vector<int> ans;
-	postorderTraversal(root, ans);
+	curSum = curSum + cur->val;
+	if (curSum == targetSum && cur->left == nullptr && cur->right == nullptr) return true;
 
-	for (auto t: ans) cout << t << " ";
-	cout << endl;
+	bool leftValid = false;
+	bool rightValid = false;
+
+	if (cur->left != nullptr) leftValid = traversal(cur->left, curSum, targetSum);
+	if (cur->right != nullptr) rightValid = traversal(cur->right, curSum, targetSum);
+	return leftValid || rightValid;
 }
 
 
-TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) 
+bool hasPathSum(TreeNode* root, int targetSum)
 {
-	if (root1 == nullptr) return root2;
-	if (root2 == nullptr) return root1;
-
-	TreeNode* root = new TreeNode(root1->val + root2->val);
-	root->left = mergeTrees(root1->left, root2->left);
-	root->right = mergeTrees(root1->right, root2->right);
-	return root;
+	if (root == nullptr) return false;
+	int curSum = 0;
+	return traversal(root, curSum, targetSum);
 }
 
 
 int main()
 {
-	vector<int> nums1 = {1, 3, 2, 5};
-	vector<int> nums2 = {2, 1, 3, -1, 4, -1, 7};
-
+	vector<int> nums1 = {5, 4, 8, 11, -1, 13, 4, 7, 2, -1, -1, -1, -1, -1, 1};
 	TreeNode* root1 = initTree(nums1);
-	TreeNode* root2 = initTree(nums2);
-	TreeNode* root = mergeTrees(root1, root2);
 
-	printTree(root);
+	int targetSum1 = 22;
+	cout << hasPathSum(root1, targetSum1) << endl;
+
+	vector<int> nums2 = {1, 2, 3};
+	TreeNode* root2 = initTree(nums2);
+
+	int targetSum2 = 5;
+	cout << hasPathSum(root2, targetSum2) << endl;
+
 	return 0;
 }

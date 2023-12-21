@@ -52,6 +52,7 @@ void postorderTraversal(TreeNode* root, vector<int>& ans)
 	postorderTraversal(root->right, ans);   // 右
 }
 
+// 打印二叉树
 void printTree(TreeNode* root)
 {
 	vector<int> ans;
@@ -62,7 +63,7 @@ void printTree(TreeNode* root)
 }
 
 
-TreeNode* createTree(vector<int>& inorder, vector<int>& postorder) 
+TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) 
 {
 	// 后序数组最后一位数字是根节点, 确定根节点在中序数组中的位置
 	int n = postorder.size();
@@ -77,12 +78,12 @@ TreeNode* createTree(vector<int>& inorder, vector<int>& postorder)
 	if (idx > 0) {
 		vector<int> left_inorder(inorder.begin(), inorder.begin() + idx);  // 分割数组, 根节点数字左侧子数组构造左孩子树
 		vector<int> left_postorder(postorder.begin(), postorder.begin() + idx);  // 后序数组左子数组索引与中序数组左子数组相同
-		root->left = createTree(left_inorder, left_postorder);
+		root->left = buildTree(left_inorder, left_postorder);
 	}
 	if (idx < n - 1) {
 		vector<int> right_inorder(inorder.begin() + idx + 1, inorder.end());  // 分割数组, 根节点数字右侧子数组构造右孩子树
 		vector<int> right_postorder(postorder.begin() + idx, postorder.end() - 1);  // 移除后序数组最后一位, 截取剩下索引作为后序数组右子数组
-		root->right = createTree(right_inorder, right_postorder);
+		root->right = buildTree(right_inorder, right_postorder);
 	}
 	return root;
 }
@@ -93,7 +94,7 @@ int main()
 	vector<int> inorder = {9, 3, 15, 20, 7};
 	vector<int> postorder = {9, 15, 7, 20, 3};
 
-	TreeNode* root = createTree(inorder, postorder);
+	TreeNode* root = buildTree(inorder, postorder);
 	printTree(root);
 
 	return 0;

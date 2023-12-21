@@ -53,6 +53,7 @@ void postorderTraversal(TreeNode* root, vector<int>& ans)
 	postorderTraversal(root->right, ans);   // 右
 }
 
+// 打印二叉树
 void printTree(TreeNode* root)
 {
 	vector<int> ans;

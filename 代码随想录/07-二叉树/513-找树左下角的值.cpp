@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <queue>
 using namespace std;
 
 
@@ -43,47 +43,39 @@ TreeNode* initTree(vector<int>& nums)
 	return nodes[0];
 }
 
-// 前序遍历输出二叉树
-void postorderTraversal(TreeNode* root, vector<int>& ans)
+
+// 层序遍历, 记录每一层第一个节点的值
+int findBottomLeftValue(TreeNode* root) 
 {
-	if (root == nullptr) return;
-	ans.push_back(root->val);      // 中
-	postorderTraversal(root->left, ans);    // 左
-	postorderTraversal(root->right, ans);   // 右
-}
+	queue<TreeNode*> que;
+	que.push(root);
+	int ans = -1;
 
-// 打印二叉树
-void printTree(TreeNode* root)
-{
-	vector<int> ans;
-	postorderTraversal(root, ans);
+	while (!que.empty()) {
+		int size = que.size();
 
-	for (auto t: ans) cout << t << " ";
-	cout << endl;
-}
+		for (int i = 0; i < size; i++) {
+			TreeNode* t = que.front();
+			que.pop();
 
-
-TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) 
-{
-	if (root1 == nullptr) return root2;
-	if (root2 == nullptr) return root1;
-
-	TreeNode* root = new TreeNode(root1->val + root2->val);
-	root->left = mergeTrees(root1->left, root2->left);
-	root->right = mergeTrees(root1->right, root2->right);
-	return root;
+			if (i == 0) ans = t->val;
+			if (t->left != nullptr) que.push(t->left);
+			if (t->right != nullptr) que.push(t->right);
+		}
+	}
+	return ans;
 }
 
 
 int main()
 {
-	vector<int> nums1 = {1, 3, 2, 5};
-	vector<int> nums2 = {2, 1, 3, -1, 4, -1, 7};
-
+	vector<int> nums1 = {2, 1, 3};
 	TreeNode* root1 = initTree(nums1);
-	TreeNode* root2 = initTree(nums2);
-	TreeNode* root = mergeTrees(root1, root2);
+	cout << findBottomLeftValue(root1) << endl;
 
-	printTree(root);
+	vector<int> nums2 = {1, 2, 3, 4, -1, 5, 6, -1, -1, -1, -1, 7};
+	TreeNode* root2 = initTree(nums2);
+	cout << findBottomLeftValue(root2) << endl;
+
 	return 0;
 }

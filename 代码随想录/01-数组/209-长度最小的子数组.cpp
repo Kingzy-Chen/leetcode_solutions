@@ -38,7 +38,7 @@ int minSubArrayLen_v1(int target, vector<int>& nums)
 		// 移动右指针
 		right++;
 
-		// 当 sumVal 大于等于 target 时, 移动 right 并更新 minLen
+		// 当 sumVal 大于等于 target 时, 移动 left 并更新 minLen
 		while (sumVal >= target) {
 			// 左闭右开区间
 			minLen = min(minLen, right - left);

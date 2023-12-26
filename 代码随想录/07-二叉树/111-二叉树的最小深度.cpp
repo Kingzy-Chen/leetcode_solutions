@@ -61,7 +61,7 @@ int minDepth(TreeNode* root)
  			TreeNode* cur = que.front();
 			que.pop();
 
-			// 没有任何孩子, 则找到深度最浅的叶子节点
+			// 没有任何孩子, 意味着找到深度最浅的叶子节点
 			if (cur->left == nullptr && cur->right == nullptr) {
 				return depth;
 			}

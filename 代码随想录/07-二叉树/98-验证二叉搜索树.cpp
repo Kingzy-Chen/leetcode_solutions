@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <queue>
+#include <algorithm>
 using namespace std;
 
 
@@ -44,26 +44,26 @@ TreeNode* initTree(vector<int>& nums)
 }
 
 
-int findBottomLeftValue(TreeNode* root) 
+// 中序遍历
+void traversal(TreeNode* cur, vector<int>& inorder) 
 {
-	queue<TreeNode*> que;
-	que.push(root);
-	int ans = -1;
+	if (cur == nullptr) return;
+	traversal(cur->left, inorder);
+	inorder.push_back(cur->val);
+	traversal(cur->right, inorder);
+}
 
-	while (!que.empty()) {
-		int size = que.size();
 
-		for (int i = 0; i < size; i++) {
-			TreeNode* t = que.front();
-			que.pop();
+bool isValidBST(TreeNode* root) 
+{
+	vector<int> inorder;
+	traversal(root, inorder);
 
-			// 层序遍历, 记录每一层第一个节点的值
-			if (i == 0) ans = t->val;
-			if (t->left != nullptr) que.push(t->left);
-			if (t->right != nullptr) que.push(t->right);
-		}
+	// 中序遍历二叉搜索树, 序列应保持严格递增
+	for (int i = 0; i < inorder.size(); i++) {
+		if (i > 0 && inorder[i - 1] >= inorder[i]) return false;
 	}
-	return ans;
+	return true;
 }
 
 
@@ -71,11 +71,11 @@ int main()
 {
 	vector<int> nums1 = {2, 1, 3};
 	TreeNode* root1 = initTree(nums1);
-	cout << findBottomLeftValue(root1) << endl;
+	cout << isValidBST(root1) << endl;
 
-	vector<int> nums2 = {1, 2, 3, 4, -1, 5, 6, -1, -1, -1, -1, 7};
+	vector<int> nums2 = {5, 1, 4, -1, -1, 3, 6};
 	TreeNode* root2 = initTree(nums2);
-	cout << findBottomLeftValue(root2) << endl;
+	cout << isValidBST(root2) << endl;
 
 	return 0;
 }

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <queue>
+#include <unordered_map>
+#include <algorithm>
 using namespace std;
 
 
@@ -44,24 +45,33 @@ TreeNode* initTree(vector<int>& nums)
 }
 
 
-int findBottomLeftValue(TreeNode* root) 
+// 中序遍历
+void traversal(TreeNode* cur, unordered_map<int, int>& mp) 
 {
-	queue<TreeNode*> que;
-	que.push(root);
-	int ans = -1;
+	if (cur == nullptr) return;
+	traversal(cur->left, mp);
+	mp[cur->val] += 1;
+	traversal(cur->right, mp);
+}
 
-	while (!que.empty()) {
-		int size = que.size();
 
-		for (int i = 0; i < size; i++) {
-			TreeNode* t = que.front();
-			que.pop();
+// 自定义排序
+bool static cmp(pair<int, int>& p1, pair<int, int>& p2) {
+	return p1.second > p2.second;
+}
 
-			// 层序遍历, 记录每一层第一个节点的值
-			if (i == 0) ans = t->val;
-			if (t->left != nullptr) que.push(t->left);
-			if (t->right != nullptr) que.push(t->right);
-		}
+
+vector<int> findMode(TreeNode* root) 
+{
+	unordered_map<int, int> mp;  // num -> cnt
+	traversal(root, mp);
+
+	vector<pair<int, int>> v(mp.begin(), mp.end());  // 将 map 存储为数组
+	sort(v.begin(), v.end(), cmp);  // 按照数字出现次数降序排序
+
+	vector<int> ans;
+	for (int i = 0; i < v.size(); i++) {
+		if (v[i].second == v[0].second) ans.push_back(v[i].first);
 	}
 	return ans;
 }
@@ -69,13 +79,19 @@ int findBottomLeftValue(TreeNode* root)
 
 int main()
 {
-	vector<int> nums1 = {2, 1, 3};
+	vector<int> nums1 = {1, -1, 2, -1, -1, 2};
 	TreeNode* root1 = initTree(nums1);
-	cout << findBottomLeftValue(root1) << endl;
 
-	vector<int> nums2 = {1, 2, 3, 4, -1, 5, 6, -1, -1, -1, -1, 7};
+	vector<int> ans1 = findMode(root1);
+	for (auto t: ans1) cout << t << " ";
+	cout << endl;
+
+	vector<int> nums2 = {1, 1, 1, 2, 2, 2, 3};
 	TreeNode* root2 = initTree(nums2);
-	cout << findBottomLeftValue(root2) << endl;
+
+	vector<int> ans2 = findMode(root2);
+	for (auto t : ans2) cout << t << " ";
+	cout << endl;
 
 	return 0;
 }

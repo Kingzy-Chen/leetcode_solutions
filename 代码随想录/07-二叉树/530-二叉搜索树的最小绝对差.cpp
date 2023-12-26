@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <queue>
+#include <algorithm>
 using namespace std;
 
 
@@ -44,38 +44,39 @@ TreeNode* initTree(vector<int>& nums)
 }
 
 
-int findBottomLeftValue(TreeNode* root) 
+// 中序遍历
+void traversal(TreeNode* cur, vector<int>& inorder) 
 {
-	queue<TreeNode*> que;
-	que.push(root);
-	int ans = -1;
+	if (cur == nullptr) return;
+	traversal(cur->left, inorder);
+	inorder.push_back(cur->val);
+	traversal(cur->right, inorder);
+}
 
-	while (!que.empty()) {
-		int size = que.size();
 
-		for (int i = 0; i < size; i++) {
-			TreeNode* t = que.front();
-			que.pop();
+int getMinimumDifference(TreeNode* root) 
+{
+	vector<int> inorder;
+	traversal(root, inorder);
 
-			// 层序遍历, 记录每一层第一个节点的值
-			if (i == 0) ans = t->val;
-			if (t->left != nullptr) que.push(t->left);
-			if (t->right != nullptr) que.push(t->right);
-		}
+	// 中序遍历二叉搜索树, 得到递增序列, 两两计算元素绝对差
+	int minDiff = INT_MAX;
+	for (int i = 0; i < inorder.size(); i++) {
+		if (i > 0) minDiff = min(minDiff, inorder[i] - inorder[i -1]);
 	}
-	return ans;
+	return minDiff;
 }
 
 
 int main()
 {
-	vector<int> nums1 = {2, 1, 3};
+	vector<int> nums1 = {4, 2, 6, 1, 3};
 	TreeNode* root1 = initTree(nums1);
-	cout << findBottomLeftValue(root1) << endl;
+	cout << getMinimumDifference(root1) << endl;
 
-	vector<int> nums2 = {1, 2, 3, 4, -1, 5, 6, -1, -1, -1, -1, 7};
+	vector<int> nums2 = {1, 0, 48, -1, -1, 12, 49};
 	TreeNode* root2 = initTree(nums2);
-	cout << findBottomLeftValue(root2) << endl;
+	cout << getMinimumDifference(root2) << endl;
 
 	return 0;
 }

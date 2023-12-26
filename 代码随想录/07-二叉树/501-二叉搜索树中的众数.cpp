@@ -61,6 +61,7 @@ bool static cmp(pair<int, int>& p1, pair<int, int>& p2) {
 }
 
 
+// 中序遍历二叉搜索树, 利用 map 记录数字出现次数
 vector<int> findMode(TreeNode* root) 
 {
 	unordered_map<int, int> mp;  // num -> cnt

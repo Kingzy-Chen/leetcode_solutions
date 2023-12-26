@@ -54,12 +54,12 @@ void traversal(TreeNode* cur, vector<int>& inorder)
 }
 
 
+// 中序遍历二叉搜索树, 序列应保持严格递增
 bool isValidBST(TreeNode* root) 
 {
 	vector<int> inorder;
 	traversal(root, inorder);
 
-	// 中序遍历二叉搜索树, 序列应保持严格递增
 	for (int i = 0; i < inorder.size(); i++) {
 		if (i > 0 && inorder[i - 1] >= inorder[i]) return false;
 	}

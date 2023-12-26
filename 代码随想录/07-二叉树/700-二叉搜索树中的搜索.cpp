@@ -62,6 +62,12 @@ void printTree(TreeNode* root)
 }
 
 
+/*
+	二叉搜索树 BST:
+	节点左子树只包含小于当前节点的数;
+	节点右子树只包含大于当前节点的数;
+	所有左子树和右子树本身必须也是二叉搜索树
+*/
 TreeNode* searchBST(TreeNode* root, int val)
 {
 	if (root == nullptr) return nullptr;

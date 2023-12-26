@@ -44,6 +44,10 @@ TreeNode* initTree(vector<int>& nums)
 }
 
 
+/*
+	平衡二叉树 AVL:
+	二叉树每个节点的左右两个子树的高度差绝对值不超过 1
+*/
 int getHeight(TreeNode* cur)
 {
 	if (cur == nullptr) return 0;

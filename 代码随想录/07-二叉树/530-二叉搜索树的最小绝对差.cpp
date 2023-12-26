@@ -54,12 +54,12 @@ void traversal(TreeNode* cur, vector<int>& inorder)
 }
 
 
+// 中序遍历二叉搜索树, 得到递增序列, 两两计算元素绝对差
 int getMinimumDifference(TreeNode* root) 
 {
 	vector<int> inorder;
 	traversal(root, inorder);
 
-	// 中序遍历二叉搜索树, 得到递增序列, 两两计算元素绝对差
 	int minDiff = INT_MAX;
 	for (int i = 0; i < inorder.size(); i++) {
 		if (i > 0) minDiff = min(minDiff, inorder[i] - inorder[i -1]);

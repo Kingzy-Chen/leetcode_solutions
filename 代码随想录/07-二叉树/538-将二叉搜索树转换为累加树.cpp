@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <queue>
+#include <unordered_map>
 using namespace std;
 
 
@@ -63,39 +64,31 @@ void printTree(TreeNode* root)
 }
 
 
-TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) 
+// 右中左遍历
+void traversal(TreeNode* cur, int& sum) 
 {
-	// 后序数组最后一位数字是根节点, 确定根节点在中序数组中的位置
-	int n = postorder.size();
-	int idx = -1;
-	for (idx = 0; idx < n; idx++) {
-		if (inorder[idx] == postorder[n - 1]) break;
-	}
+	if (cur == nullptr) return;
+	traversal(cur->right, sum);  // 右
+	sum += cur->val;             // 中
+	cur->val = sum;
+	traversal(cur->left, sum);   // 左
+}
 
-	// 构造根节点
-	TreeNode* root = new TreeNode(inorder[idx]);
 
-	if (idx > 0) {
-		vector<int> left_inorder(inorder.begin(), inorder.begin() + idx);  // 分割数组, 根节点数字左侧子数组构造左孩子树
-		vector<int> left_postorder(postorder.begin(), postorder.begin() + idx);  // 后序数组左子数组索引与中序数组左子数组相同
-		root->left = buildTree(left_inorder, left_postorder);
-	}
-	if (idx < n - 1) {
-		vector<int> right_inorder(inorder.begin() + idx + 1, inorder.end());  // 分割数组, 根节点数字右侧子数组构造右孩子树
-		vector<int> right_postorder(postorder.begin() + idx, postorder.end() - 1);  // 移除后序数组最后一位, 截取剩下索引作为后序数组右子数组
-		root->right = buildTree(right_inorder, right_postorder);
-	}
+TreeNode* convertBST(TreeNode* root) 
+{
+	int sum = 0;
+	traversal(root, sum);
 	return root;
 }
 
 
 int main()
 {
-	vector<int> inorder = {9, 3, 15, 20, 7};
-	vector<int> postorder = {9, 15, 7, 20, 3};
+	vector<int> nums = {4, 1, 6, 0, 2, 5, 7, -1, -1, -1, 3, -1, -1, -1, 8};
+	TreeNode* root = initTree(nums);
 
-	TreeNode* root = buildTree(inorder, postorder);
-	printTree(root);
-
+	TreeNode* ans = convertBST(root);
+	printTree(ans);
 	return 0;
 }

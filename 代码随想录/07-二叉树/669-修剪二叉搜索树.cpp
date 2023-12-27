@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <queue>
+#include <unordered_map>
 using namespace std;
 
 
@@ -63,39 +64,31 @@ void printTree(TreeNode* root)
 }
 
 
-TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) 
+TreeNode* trimBST(TreeNode* root, int low, int high)
 {
-	// 后序数组最后一位数字是根节点, 确定根节点在中序数组中的位置
-	int n = postorder.size();
-	int idx = -1;
-	for (idx = 0; idx < n; idx++) {
-		if (inorder[idx] == postorder[n - 1]) break;
-	}
+	if (root == nullptr) return nullptr;
 
-	// 构造根节点
-	TreeNode* root = new TreeNode(inorder[idx]);
+	// 若当前节点小于 low, 则舍弃其左子树 (它们的值必定小于 low), 只更新右子树, 并让父节点指向右子树
+	if (root->val < low) return trimBST(root->right, low, high);
+	// 若当前节点大于 high, 则舍弃其右子树 (它们的值必定大于 high), 只更新左子树, 并让父节点指向左子树
+	else if (root->val > high) return trimBST(root->left, low, high);
 
-	if (idx > 0) {
-		vector<int> left_inorder(inorder.begin(), inorder.begin() + idx);  // 分割数组, 根节点数字左侧子数组构造左孩子树
-		vector<int> left_postorder(postorder.begin(), postorder.begin() + idx);  // 后序数组左子数组索引与中序数组左子数组相同
-		root->left = buildTree(left_inorder, left_postorder);
+	// 若当前节点在区间内, 则更新其子树
+	else {
+		root->left = trimBST(root->left, low, high);
+		root->right = trimBST(root->right, low, high);
+		return root;
 	}
-	if (idx < n - 1) {
-		vector<int> right_inorder(inorder.begin() + idx + 1, inorder.end());  // 分割数组, 根节点数字右侧子数组构造右孩子树
-		vector<int> right_postorder(postorder.begin() + idx, postorder.end() - 1);  // 移除后序数组最后一位, 截取剩下索引作为后序数组右子数组
-		root->right = buildTree(right_inorder, right_postorder);
-	}
-	return root;
 }
 
 
 int main()
 {
-	vector<int> inorder = {9, 3, 15, 20, 7};
-	vector<int> postorder = {9, 15, 7, 20, 3};
+	vector<int> nums = {3, 0, 4, -1, 2, -1, -1, -1, -1, 1};
+	TreeNode* root = initTree(nums);
 
-	TreeNode* root = buildTree(inorder, postorder);
-	printTree(root);
-
+	int low = 1;
+	int high = 3;
+	printTree(trimBST(root, low, high));
 	return 0;
 }

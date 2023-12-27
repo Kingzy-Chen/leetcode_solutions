@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <queue>
+#include <unordered_map>
 using namespace std;
 
 
@@ -63,39 +64,51 @@ void printTree(TreeNode* root)
 }
 
 
-TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) 
+// 遍历时遇到空的孩子指针, 添加新节点
+void traversal(TreeNode* cur, int val) 
 {
-	// 后序数组最后一位数字是根节点, 确定根节点在中序数组中的位置
-	int n = postorder.size();
-	int idx = -1;
-	for (idx = 0; idx < n; idx++) {
-		if (inorder[idx] == postorder[n - 1]) break;
+	if (val > cur->val) {
+		if (cur->right == nullptr) {
+			TreeNode* node = new TreeNode(val);
+			cur->right = node;
+		}
+		else traversal(cur->right, val);
 	}
 
-	// 构造根节点
-	TreeNode* root = new TreeNode(inorder[idx]);
+	if (val < cur->val) {
+		if (cur->left == nullptr) {
+			TreeNode* node = new TreeNode(val);
+			cur->left = node;
+		}
+		else traversal(cur->left, val);
+	}
+}
 
-	if (idx > 0) {
-		vector<int> left_inorder(inorder.begin(), inorder.begin() + idx);  // 分割数组, 根节点数字左侧子数组构造左孩子树
-		vector<int> left_postorder(postorder.begin(), postorder.begin() + idx);  // 后序数组左子数组索引与中序数组左子数组相同
-		root->left = buildTree(left_inorder, left_postorder);
+
+TreeNode* insertIntoBST(TreeNode* root, int val)
+{
+	if (root == nullptr) {
+		TreeNode* node = new TreeNode(val);
+		return node;
 	}
-	if (idx < n - 1) {
-		vector<int> right_inorder(inorder.begin() + idx + 1, inorder.end());  // 分割数组, 根节点数字右侧子数组构造右孩子树
-		vector<int> right_postorder(postorder.begin() + idx, postorder.end() - 1);  // 移除后序数组最后一位, 截取剩下索引作为后序数组右子数组
-		root->right = buildTree(right_inorder, right_postorder);
-	}
+	traversal(root, val);
 	return root;
 }
 
 
 int main()
 {
-	vector<int> inorder = {9, 3, 15, 20, 7};
-	vector<int> postorder = {9, 15, 7, 20, 3};
+	vector<int> nums1 = {4, 2, 7, 1, 3};
+	TreeNode* root1 = initTree(nums1);
 
-	TreeNode* root = buildTree(inorder, postorder);
-	printTree(root);
+	int val1 = 5;
+	printTree(insertIntoBST(root1, val1));
+
+	vector<int> nums2 = {40, 20, 60, 10, 30, 50, 70};
+	TreeNode* root2 = initTree(nums2);
+
+	int val2 = 25;
+	printTree(insertIntoBST(root2, val2));
 
 	return 0;
 }

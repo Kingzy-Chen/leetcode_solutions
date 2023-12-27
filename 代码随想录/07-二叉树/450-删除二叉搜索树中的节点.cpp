@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <queue>
+#include <unordered_map>
 using namespace std;
 
 
@@ -63,39 +64,48 @@ void printTree(TreeNode* root)
 }
 
 
-TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) 
+TreeNode* deleteNode(TreeNode* root, int key)
 {
-	// 后序数组最后一位数字是根节点, 确定根节点在中序数组中的位置
-	int n = postorder.size();
-	int idx = -1;
-	for (idx = 0; idx < n; idx++) {
-		if (inorder[idx] == postorder[n - 1]) break;
-	}
+	if (root == nullptr) return nullptr;
 
-	// 构造根节点
-	TreeNode* root = new TreeNode(inorder[idx]);
+	// 找到要删除的节点
+	if (root->val == key) {
 
-	if (idx > 0) {
-		vector<int> left_inorder(inorder.begin(), inorder.begin() + idx);  // 分割数组, 根节点数字左侧子数组构造左孩子树
-		vector<int> left_postorder(postorder.begin(), postorder.begin() + idx);  // 后序数组左子数组索引与中序数组左子数组相同
-		root->left = buildTree(left_inorder, left_postorder);
+		// 若要删除的节点为叶子节点, 则返回空指针, 相当于让父节点指向空
+		if (root->left == nullptr && root->right == nullptr) return nullptr;
+
+		// 若要删除的节点有其中一个子树非空, 则返回它, 相当于让父节点指向这个子树
+		else if (root->left != nullptr && root->right == nullptr) return root->left;
+		else if (root->left == nullptr && root->right != nullptr) return root->right;
+
+		// 若要删除的节点左右子树都非空
+		else {
+			// 则将右子树拼接到左子树的右下角, 并将父节点指向左子树
+			TreeNode* node = root->left;
+			while (node->right != nullptr) node = node->right;
+
+			node->right = root->right;
+			return root->left;
+		}
+
 	}
-	if (idx < n - 1) {
-		vector<int> right_inorder(inorder.begin() + idx + 1, inorder.end());  // 分割数组, 根节点数字右侧子数组构造右孩子树
-		vector<int> right_postorder(postorder.begin() + idx, postorder.end() - 1);  // 移除后序数组最后一位, 截取剩下索引作为后序数组右子数组
-		root->right = buildTree(right_inorder, right_postorder);
+	// 递归更新子树
+	else {
+		root->left = deleteNode(root->left, key);
+		root->right = deleteNode(root->right, key);
+		return root;
 	}
-	return root;
 }
 
 
 int main()
 {
-	vector<int> inorder = {9, 3, 15, 20, 7};
-	vector<int> postorder = {9, 15, 7, 20, 3};
+	vector<int> nums = {5, 3, 6, 2, 4, -1, 7};
+	TreeNode* root = initTree(nums);
 
-	TreeNode* root = buildTree(inorder, postorder);
-	printTree(root);
+	int key = 3;
+	TreeNode* ans = deleteNode(root, key);
+	printTree(ans);
 
 	return 0;
 }

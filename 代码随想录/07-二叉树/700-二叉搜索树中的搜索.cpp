@@ -46,7 +46,7 @@ TreeNode* initTree(vector<int>& nums)
 void postorderTraversal(TreeNode* root, vector<int>& ans)
 {
 	if (root == nullptr) return;
-	ans.push_back(root->val);      // 中
+	ans.push_back(root->val);               // 中
 	postorderTraversal(root->left, ans);    // 左
 	postorderTraversal(root->right, ans);   // 右
 }

@@ -117,7 +117,7 @@ TreeNode* lowestCommonAncestor_v2(TreeNode* root, TreeNode* p, TreeNode* q)
 	TreeNode* left = lowestCommonAncestor_v2(root->left, p, q);
 	TreeNode* right = lowestCommonAncestor_v2(root->right, p, q);
 
-	// 若 left 或 right 有其一为空, 向上返回非空的指针
+	// 若 left 或 right 有其一为空, 则向上返回非空的指针
 	if (left != nullptr && right == nullptr) return left;
 	else if (left == nullptr && right != nullptr) return right;
 	else if (left == nullptr && right == nullptr) return nullptr;

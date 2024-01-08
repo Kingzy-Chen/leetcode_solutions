@@ -73,6 +73,7 @@ void traversal(TreeNode* cur)
 	traversal(cur->right);
 }
 
+
 TreeNode* invertTree_v1(TreeNode* root)
 {
 	if (root == nullptr) return root;

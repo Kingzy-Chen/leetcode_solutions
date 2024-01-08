@@ -46,6 +46,7 @@ TreeNode* initTree(vector<int>& nums)
 
 bool traversal(TreeNode* cur, int curSum, int targetSum)
 {
+	// 判断是否到达叶子节点且路径总和是否等于 targetSum
 	curSum = curSum + cur->val;
 	if (curSum == targetSum && cur->left == nullptr && cur->right == nullptr) return true;
 

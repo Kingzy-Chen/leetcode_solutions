@@ -68,6 +68,7 @@ int getHeight(TreeNode* cur)
 	}
 }
 
+
 bool isBalanced(TreeNode* root)
 {
 	if (getHeight(root) == -1) return false;

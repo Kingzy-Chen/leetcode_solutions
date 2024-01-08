@@ -64,22 +64,25 @@ void printTree(TreeNode* root)
 }
 
 
-// 遍历时遇到空的孩子指针, 添加新节点
 void traversal(TreeNode* cur, int val) 
 {
 	if (val > cur->val) {
+		// 遍历时遇到空的孩子指针, 添加新节点
 		if (cur->right == nullptr) {
 			TreeNode* node = new TreeNode(val);
 			cur->right = node;
 		}
+		// 否则继续向下搜索
 		else traversal(cur->right, val);
 	}
 
 	if (val < cur->val) {
+		// 遍历时遇到空的孩子指针, 添加新节点
 		if (cur->left == nullptr) {
 			TreeNode* node = new TreeNode(val);
 			cur->left = node;
 		}
+		// 否则继续向下搜索
 		else traversal(cur->left, val);
 	}
 }

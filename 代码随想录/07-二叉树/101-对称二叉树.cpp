@@ -80,6 +80,7 @@ bool check(TreeNode* leftTree, TreeNode* rightTree)
 	return inside && outside;
 }
 
+
 bool isSymmetric_v1(TreeNode* root)
 {
 	// 递归比较左子树和右子树是否对称

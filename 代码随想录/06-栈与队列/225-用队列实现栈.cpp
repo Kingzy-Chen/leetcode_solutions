@@ -24,12 +24,13 @@ public:
 			que2.push(que1.front());
 			que1.pop();
 		}
+		// 返回最后一个元素
 		int ans = que1.front();
 		que1.pop();
 
 		// 将 que2 赋值给 que1
 		que1 = que2;
-
+		
 		// 清空 que2
 		while (!que2.empty()) {
 			que2.pop();

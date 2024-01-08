@@ -67,15 +67,15 @@ void printTree(TreeNode* root)
 TreeNode* sortedArrayToBST(vector<int>& nums) 
 {
 	int n = nums.size();
-	int mid = n / 2;
+	int mid = n / 2;  // 找到有序数组最中间的元素
 
 	TreeNode* root = new TreeNode(nums[mid]);
 	if (0 < mid) {
-		vector<int> leftnums = vector<int>(nums.begin(), nums.begin() + mid);
+		vector<int> leftnums = vector<int>(nums.begin(), nums.begin() + mid);  // 分割数组, 中间元素左侧子数组构造左孩子树
 		root->left = sortedArrayToBST(leftnums);
 	}
 	if (mid < n - 1) {
-		vector<int> rightnums = vector<int>(nums.begin() + mid + 1, nums.end());
+		vector<int> rightnums = vector<int>(nums.begin() + mid + 1, nums.end());  // 分割数组, 中间元素右侧子数组构造右孩子树
 		root->right = sortedArrayToBST(rightnums);
 	}
 	return root;

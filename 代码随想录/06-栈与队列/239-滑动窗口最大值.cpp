@@ -18,6 +18,7 @@ void push(deque<int>& que, int x)
 	que.push_back(x);
 }
 
+
 // 检查滑动窗口最左侧是否等于队头元素, 如相等则弹出队头元素
 void pop(deque<int>& que, int x)
 {
@@ -26,21 +27,26 @@ void pop(deque<int>& que, int x)
 	}
 }
 
+
 /*维护单调队列*/
 vector<int> maxSlidingWindow(vector<int>& nums, int k) 
 {
 	deque<int> que;  // 双向队列
 	vector<int> ans;
 
-	for (int i = 0; i < nums.size(); i++) {
-		// 移除离开滑动窗口范围的元素
-		if (i >= k) {
-			pop(que, nums[i - k]);
-		}
-		// 添加元素, 同时维护单调递减队列
+	// 将前 k 个元素放入单调队列
+	for (int i = 0; i < k; i++) {
 		push(que, nums[i]);
-		// 此时队头元素为当前滑动窗口内的最大元素
-		if (i >= k - 1) ans.push_back(que.front());
+	}
+	// 队头元素为当前滑动窗口内的最大值
+	ans.push_back(que.front());
+
+	for (int i = k; i < nums.size(); i++) {
+		// 移除离开滑动窗口范围的元素
+		pop(que, nums[i - k]);
+		// 添加新元素, 同时维护单调递减队列
+		push(que, nums[i]);
+		ans.push_back(que.front());
 	}
 	return ans;
 }

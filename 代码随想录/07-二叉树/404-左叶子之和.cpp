@@ -54,6 +54,7 @@ void traversal(TreeNode* cur, bool isLeft, int& ans)
 	if (cur->right) traversal(cur->right, false, ans);
 }
 
+
 int sumOfLeftLeaves(TreeNode* root) 
 {
 	int ans = 0;

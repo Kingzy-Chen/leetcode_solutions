@@ -30,8 +30,11 @@ bool isHappy(int n)
 
 int main()
 {
-	int n = 1;
-	cout << isHappy(n) << endl;
+	int n1 = 19;
+	cout << isHappy(n1) << endl;
+
+	int n2 = 2;
+	cout << isHappy(n2) << endl;
 
 	return 0;
 }

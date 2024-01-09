@@ -50,7 +50,6 @@ bool isValid(string s)
 
 void backtracking(string s, int startIdx)
 {
-	// 规定在字符串的 startIdx 索引位置后进行切割
 	if (startIdx >= s.size()) {
 		result.push_back(path);
 		return;
@@ -58,6 +57,8 @@ void backtracking(string s, int startIdx)
 
 	// 在循环内部切割子串
 	for (int i = startIdx; i < s.size(); i++) {
+
+		// 切割字符串的 [startIdx, i] 索引部分
 		string sub_s = s.substr(startIdx, i - startIdx + 1);
 
 		if (isValid(sub_s)) {

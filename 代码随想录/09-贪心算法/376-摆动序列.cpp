@@ -16,6 +16,7 @@ int wiggleMaxLength(vector<int>& nums)
 	for (int i = 0; i < nums.size() - 1; i++) {
 		curDiff = nums[i + 1] - nums[i];
 
+		// 在 if 条件里更新 preDiff 而不是在 if 之外更新, 因为单调坡中有可能穿插平坡
 		if ((preDiff <= 0 && curDiff > 0) || (preDiff >= 0 && curDiff < 0)) {
 			preDiff = curDiff;
 			ans += 1;

@@ -41,7 +41,7 @@ void backtracking(int startIdx, vector<int>& nums)
 		result.push_back(path);
 	}
 
-	// 由于本题要求递增子序列, 因此不能排序, 只能使用集合进行树层重复元素去除
+	// 由于本题是求递增子序列, 因此不能排序, 只能使用集合进行树层重复元素去除
 	unordered_set<int> uset;
 
 	for (int i = startIdx; i < nums.size(); i++) {

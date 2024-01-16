@@ -56,7 +56,7 @@ void backtracking(int n, int idx, string digits)
 		return;
 	}
 
-	// 本题是求多个集合的组合而非同一集合的组合, 所以从 0 开始遍历
+	// 由于本题是求多个集合的组合而非同一集合的组合, 所以从 0 开始遍历
 	char c = digits[idx];
 
 	for (int i = 0; i < mp[c].size(); i++) {

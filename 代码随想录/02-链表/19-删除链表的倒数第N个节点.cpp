@@ -95,10 +95,10 @@ int main()
 	head1 = removeNthFromEnd_v1(head1, n1);
 	printList(head1);
 
-	vector<int> nums2 = {1, 2, 3, 5};
+	vector<int> nums2 = {1};
 	ListNode* head2 = initList(nums2);
 
-	int n2 = 3;
+	int n2 = 1;
 	head2 = removeNthFromEnd_v2(head2, n2);
 	printList(head2);
 	

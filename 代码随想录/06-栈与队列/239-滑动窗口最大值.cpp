@@ -58,7 +58,7 @@ int main()
 	int k = 3;
 
 	vector<int> ans = maxSlidingWindow(nums, k);
-	for (auto t: ans) cout << t << " ";
+	for (auto i: ans) cout << i << " ";
 	cout << endl;
 
 	return 0;

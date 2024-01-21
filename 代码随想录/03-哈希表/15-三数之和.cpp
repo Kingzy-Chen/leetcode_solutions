@@ -4,7 +4,7 @@
 using namespace std;
 
 /*
-	思路: 单循环+头尾双指针
+	单循环+头尾双指针模板:
 	for (int i = 0; i < n - 2; i++) {
 		int left = i + 1;
 		int right = n - 1;

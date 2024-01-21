@@ -3,20 +3,20 @@
 using namespace std;
 
 /*
-	思路: 滑动窗口, 左闭右开区间 [left, right)
+	滑动窗口模板, 左闭右开区间 [left, right):
 	int left = 0;
 	int right = 0;
 
 	while (right < n) {
 		// 更新窗口内元素
-		...
+		... ...
 		// 移动右指针
 		right++;
 
 		// 判断窗口是否需要收缩
 		while (window needs shrink) {
 			// 更新窗口内元素
-			...
+			... ...
 			// 移动左指针
 			left++;
 		}
@@ -87,15 +87,17 @@ int minSubArrayLen_v2(int target, vector<int>& nums)
 
 int main()
 {
-	int target1 = 7;
 	vector<int> nums1 = {2, 3, 1, 2, 4, 3};
-	int ans1 = minSubArrayLen_v1(target1, nums1);
-	cout << ans1 << endl;
+	int target1 = 7;
+	cout << minSubArrayLen_v1(target1, nums1) << endl;
 
-	int target2 = 4;
 	vector<int> nums2 = {1, 4, 4};
-	int ans2 = minSubArrayLen_v2(target2, nums2);
-	cout << ans2 << endl;
+	int target2 = 4;
+	cout << minSubArrayLen_v2(target2, nums2) << endl;
+
+	vector<int> nums3 = {1, 1, 1, 1, 1, 1, 1, 1};
+	int target3 = 11;
+	cout << minSubArrayLen_v1(target3, nums3) << endl;
 
 	return 0;
 }

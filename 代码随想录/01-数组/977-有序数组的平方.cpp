@@ -29,9 +29,16 @@ vector<int> sortedSquares(vector<int>& nums)
 
 int main()
 {
-	vector<int> nums = {-4, -1, 0, 3, 10};
-	vector<int> ans = sortedSquares(nums);
-	for (auto t: ans) cout << t << " ";
+	vector<int> nums1 = {-4, -1, 0, 3, 10};
+	vector<int> ans1 = sortedSquares(nums1);
+
+	for (auto i: ans1) cout << i << " ";
+	cout << endl;
+
+	vector<int> nums2 = {-7, -3, 2, 3, 11};
+	vector<int> ans2 = sortedSquares(nums2);
+
+	for (auto i: ans2) cout << i << " ";
 	cout << endl;
 
 	return 0;

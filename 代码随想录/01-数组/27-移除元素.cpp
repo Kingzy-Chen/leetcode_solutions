@@ -54,20 +54,20 @@ int removeElement_v2(vector<int>& nums, int val)
 
 int main()
 {
-	vector<int> nums1 = {0, 1, 2, 2, 3, 0, 4, 2};
-	int val1 = 2;
+	vector<int> nums1 = {3, 2, 2, 3};
+	int val1 = 3;
 	int ans1 = removeElement_v1(nums1, val1);
 
 	cout << ans1 << endl;
-	for (int i = 0; i < ans1; i++) cout << nums1[i] << " ";
+	for (auto i: nums1) cout << i << " ";
 	cout << endl;
 
-	vector<int> nums2 = {3, 2, 2, 3};
-	int val2 = 3;
+	vector<int> nums2 = {0, 1, 2, 2, 3, 0, 4, 2};
+	int val2 = 2;
 	int ans2 = removeElement_v2(nums2, val2);
 
 	cout << ans2 << endl;
-	for (int i = 0; i < ans2; i++) cout << nums2[i] << " ";
+	for (auto i: nums2) cout << i << " ";
 	cout << endl;
 
 	return 0;

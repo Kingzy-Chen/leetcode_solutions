@@ -30,13 +30,15 @@ int main()
 {
 	vector<int> nums1 = {1, 3, 5, 6};
 	int target1 = 5;
-	int ans1 = searchInsert(nums1, target1);
-	cout << ans1 << endl;
+	cout << searchInsert(nums1, target1) << endl;
 
 	vector<int> nums2 = {1, 3, 5, 6};
 	int target2 = 2;
-	int ans2 = searchInsert(nums2, target2);
-	cout << ans2 << endl;
+	cout << searchInsert(nums2, target2) << endl;
+
+	vector<int> nums3 = {1, 3, 5, 6};
+	int target3 = 7;
+	cout << searchInsert(nums3, target3) << endl;
 
 	return 0;
 }

@@ -49,14 +49,14 @@ int main()
 	int k1 = 2;
 
 	vector<int> ans1 = topKFrequent(nums1, k1);
-	for (auto t: ans1) cout << t << " ";
+	for (auto i: ans1) cout << i << " ";
 	cout << endl;
 
 	vector<int> nums2 = {1};
 	int k2 = 1;
 
 	vector<int> ans2 = topKFrequent(nums2, k2);
-	for (auto t: ans2) cout << t << " ";
+	for (auto i: ans2) cout << i << " ";
 	cout << endl;
 
 	return 0;

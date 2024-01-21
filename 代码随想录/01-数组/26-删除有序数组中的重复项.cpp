@@ -26,12 +26,14 @@ int removeDuplicates(vector<int>& nums)
 
 int main()
 {
-	vector<int> nums = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
-	int ans = removeDuplicates(nums);
+	vector<int> nums1 = {1, 1, 2};
+	int ans1 = removeDuplicates(nums1);
+	for (int i = 0; i < ans1; i++) cout << nums1[i] << " ";
+	cout << endl;
 
-	for (int i = 0; i < ans; i++) {
-		cout << nums[i] << " ";
-	}
+	vector<int> nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+	int ans2 = removeDuplicates(nums2);
+	for (int i = 0; i < ans2; i++) cout << nums2[i] << " ";
 	cout << endl;
 
 	return 0;

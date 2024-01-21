@@ -44,9 +44,13 @@ int main()
 	string t2 = "c#d#";
 	cout << backspaceCompare(s2, t2) << endl;
 
-	string s3 = "#a#b";
-	string t3 = "b#b";
+	string s3 = "a#c";
+	string t3 = "b";
 	cout << backspaceCompare(s3, t3) << endl;
+
+	string s4 = "#a#b";
+	string t4 = "b#b";
+	cout << backspaceCompare(s4, t4) << endl;
 
 	return 0;
 }

@@ -23,10 +23,14 @@ void moveZeroes(vector<int>& nums)
 
 int main()
 {
-	vector<int> nums = {0, 1, 0, 3, 12};
-	moveZeroes(nums);
+	vector<int> nums1 = {0, 1, 0, 3, 12};
+	moveZeroes(nums1);
+	for (auto i: nums1) cout << i << " ";
+	cout << endl;
 
-	for (auto i: nums) cout << i << " ";
+	vector<int> nums2 = {0};
+	moveZeroes(nums2);
+	for (auto i: nums2) cout << i << " ";
 	cout << endl;
 
 	return 0;

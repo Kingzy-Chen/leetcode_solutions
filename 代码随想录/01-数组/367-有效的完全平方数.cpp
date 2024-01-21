@@ -26,9 +26,11 @@ bool isPerfectSquare(int num)
 
 int main()
 {
-	int num = 14;
-	bool ans = isPerfectSquare(num);
-	cout << ans << endl;
+	int num1 = 16;
+	cout << isPerfectSquare(num1) << endl;
+
+	int num2 = 14;
+	cout << isPerfectSquare(num2) << endl;
 
 	return 0;
 }

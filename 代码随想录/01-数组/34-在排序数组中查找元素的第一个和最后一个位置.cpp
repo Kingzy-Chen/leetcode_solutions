@@ -98,5 +98,10 @@ int main()
     vector<int> ans2 = searchRange_v2(nums2, target2);
     cout << ans2[0] << " " << ans2[1] << endl;
 
+    vector<int> nums3 = {};
+    int target3 = 0;
+    vector<int> ans3 = searchRange_v2(nums3, target3);
+    cout << ans3[0] << " " << ans3[1] << endl;
+
     return 0;
 }

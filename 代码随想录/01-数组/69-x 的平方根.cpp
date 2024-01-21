@@ -7,7 +7,7 @@ int mySqrt(int x)
 {
 	int left = 0;
 	int right = x;
-	int ans = -1
+	int ans = -1;
 
 	// x 平方根的整数部分满足 k^2 <= x 的最大 k 值
 	while (left <= right)
@@ -27,10 +27,12 @@ int mySqrt(int x)
 
 
 int main()
-{
-	int x = 8;
-	int ans = mySqrt(x);
-	cout << ans << endl;
+{	
+	int x1 = 4;
+	cout << mySqrt(x1) << endl;
+
+	int x2 = 8;
+	cout << mySqrt(x2) << endl;
 
 	return 0;
 }

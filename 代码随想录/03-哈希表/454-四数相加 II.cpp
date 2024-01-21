@@ -11,7 +11,6 @@ using namespace std;
 int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) 
 {
 	unordered_map<int, int> mp;
-	int n = nums1.size();
 	int ans = 0;
 
 	for (auto a: nums1) {

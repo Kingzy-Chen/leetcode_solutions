@@ -7,22 +7,21 @@ using namespace std;
 bool isHappy(int n) 
 {
 	unordered_set<int> s;  // 存储出现过的结果
-	int N = n;
-	int a = 0;
+	int number = 0;
 	int sum = 0;
 
-	while (N != 1) {
+	while (n != 1) {
 		sum = 0;
 
-		while (N > 0) {
-			a = N % 10;
-			N /= 10;
-			sum += pow(a, 2);
+		while (n > 0) {
+			number = n % 10;
+			n /= 10;
+			sum += pow(number, 2);
 		}
-		N = sum;
+		n = sum;
 
-		if (s.find(N) != s.end()) return false;  // 说明进入无限循环
-		else s.insert(N);
+		if (s.find(n) != s.end()) return false;  // 说明进入无限循环
+		else s.insert(n);
 	}
 	return true;
 }	

@@ -9,8 +9,9 @@ using namespace std;
 	stack<int> stk;
 	stk.push(0);
 
+	// 维护单调递减的栈结构
 	for (int i = 1; i < nums.size(); i++) {
-		// 保持栈内元素从大到小排列 (单调栈保存数组元素的下标)
+		// 单调栈保存数组元素的下标
 		while (!stk.empty() && nums[i] > nums[stk.top()]) {
 			... ... // 处理逻辑
 			stk.pop();

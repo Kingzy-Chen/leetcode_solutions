@@ -5,7 +5,7 @@ using namespace std;
 
 /*
 	思路: 将数值作为 key, 将位置作为 value,
-	通过 target - nums[i] 来寻找是否有匹配的数值
+	通过 target - nums[i] 来寻找哈希表中是否有匹配的数值
 */
 
 vector<int> twoSum(vector<int>& nums, int target)

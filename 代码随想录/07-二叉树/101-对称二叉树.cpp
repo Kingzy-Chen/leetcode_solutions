@@ -112,7 +112,7 @@ bool isSymmetric_v2(TreeNode* root)
 			return false;
 		}
 
-		// 内测子树
+		// 内侧子树
 		stk.push(leftTree->right);
 		stk.push(rightTree->left);
 		// 外侧子树

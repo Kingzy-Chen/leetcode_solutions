@@ -9,6 +9,10 @@ using namespace std;
 		for (int j = i + 1; j < n - 2; j++) {
 			int left = j + 1;
 			int right = n - 1;
+
+			while (left < right) {
+				... ...
+			}
 		}
 	}
 	类似于 15-三数之和

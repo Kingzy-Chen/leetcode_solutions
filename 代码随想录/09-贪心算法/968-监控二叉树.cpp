@@ -61,17 +61,17 @@ int update(TreeNode* cur)
 	int leftValue = update(cur->left);
 	int rightValue = update(cur->right);
 
-	// 情况1: 若左右孩子均为有覆盖, 则当前节点为无覆盖
+	// 情况 1: 若左右孩子均为有覆盖, 则当前节点为无覆盖
 	if (leftValue == 2 && rightValue == 2) {
 		cur->val = 0;
 		return 0;
 	}
-	// 情况2: 若左右孩子存在一个是无覆盖, 则当前节点为摄像头 (优先于情况3)
+	// 情况 2: 若左右孩子存在一个是无覆盖, 则当前节点为摄像头 (该情况优先于情况 3)
 	else if (leftValue == 0 || rightValue == 0) {
 		cur->val = 1;
 		return 1;
 	}
-	// 情况3: 若左右孩子存在一个有摄像头, 则当前节点为有覆盖
+	// 情况 3: 若左右孩子存在一个有摄像头, 则当前节点为有覆盖
 	else if (leftValue == 1 || rightValue == 1) {
 		cur->val = 2;
 		return 2;
@@ -94,7 +94,7 @@ void traversal(TreeNode* cur, int& ans)
 int minCameraCover(TreeNode* root)
 {
 	int ans = 0;
-	if (update(root) == 0) ans += 1;  // 情况4: 根节点为无覆盖, 在根节点多加一个摄像头
+	if (update(root) == 0) ans += 1;  // 情况 4: 根节点为无覆盖, 在根节点多加一个摄像头
 
 	traversal(root, ans);
 	return ans;

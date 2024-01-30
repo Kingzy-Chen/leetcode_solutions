@@ -22,7 +22,7 @@ int monotoneIncreasingDigits(int n)
 		}
 	}
 
-	// 从最低位至 position 数字都替换为 9
+	// 从最低位至 position 的数字都替换为 9
 	for (int i = 0; i <= position; i++) {
 		number[i] = 9;
 	}

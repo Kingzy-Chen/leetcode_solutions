@@ -26,7 +26,7 @@ int findTargetSumWays(vector<int>& nums, int target)
 	dp[0] = 1;
 	for (int i = 0; i < n; i++) {
 		for (int j = bagWeight; j >= 0; j--) {
-			if (j >= nums[i]) dp[j] += dp[j - nums[i]];
+			if (j >= nums[i]) dp[j] += dp[j - nums[i]];  // 装满背包的方式
 			else continue;
 		}
 	}

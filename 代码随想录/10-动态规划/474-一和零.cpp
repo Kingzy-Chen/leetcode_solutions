@@ -19,7 +19,7 @@ int findMaxForm(vector<string>& strs, int m, int n)
 	}
 
 	// 三维数组
-	// dp[k][i][j] 表示从下标 0-k 的字符串中选取, 放入 '0' 容量为 i 且 '1' 容量为 j 的背包中的最大字符串数量
+	// dp[k][i][j] 表示从下标 0-k 的字符串中选取, 放入 '0' 容量为 i 且 '1' 容量为 j 的背包所获得的 strs 最大子集大小
 	vector<vector<vector<int>>> dp(strs.size(), vector<vector<int>>(m + 1, vector<int>(n + 1, 0)));
 
 	// 初始化

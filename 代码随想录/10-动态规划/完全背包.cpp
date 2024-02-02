@@ -23,6 +23,7 @@ using namespace std;
 	一维数组, 先遍历物品再遍历容量, 第二层for从小到大遍历, 求组合数
 	一维数组, 先遍历容量再遍历物品, 第二层for从小到大遍历, 求排列数
 	组合数不要求顺序, 排列数要求顺序
+	除非是求最小数, 此时有顺序和无顺序没有区别, 两种遍历方式均可
 */
 
 int completeBagProblem(vector<int> weight, vector<int> value, int bagWeight)

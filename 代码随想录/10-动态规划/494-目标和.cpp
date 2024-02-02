@@ -17,7 +17,7 @@ int findTargetSumWays(vector<int>& nums, int target)
 	if (abs(target) > sum) return 0;
 	if ((target + sum) % 2 == 1) return 0;
 
-	// dp[j] 表示正数数字总和为 j 的数字搭配有 dp[j] 种
+	// dp[j] 表示正数数字总和为 j 的数字搭配组合数
 	int bagWeight = (sum + target) / 2;
 	int n = nums.size();
 	vector<int> dp(bagWeight + 1, 0);

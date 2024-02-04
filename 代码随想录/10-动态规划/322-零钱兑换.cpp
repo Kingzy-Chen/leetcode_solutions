@@ -11,7 +11,7 @@ int coinChange(vector<int>& coins, int amount)
 	// dp[j] 表示总金额为 j 的最小硬币个数
 	vector<unsigned long long> dp(amount + 1, INT_MAX);  // unsigned long long 过样例
 
-	// 由于是求最小数, 此时有顺序和无顺序没有区别, 先遍历物品或先遍历容量均可
+	// 由于是求最小数, 因此有顺序和无顺序没有区别, 先遍历物品或先遍历容量均可
 	dp[0] = 0;
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j <= amount; j++) {

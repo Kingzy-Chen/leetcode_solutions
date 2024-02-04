@@ -14,7 +14,7 @@ int numSquares(int n)
 	// dp[j] 表示总和为 j 的完全平方数最少数量
 	vector<int> dp(n + 1, INT_MAX);
 
-	// 由于是求最小数, 此时有顺序和无顺序没有区别, 先遍历物品或先遍历容量均可
+	// 由于是求最小数, 因此有顺序和无顺序没有区别, 先遍历物品或先遍历容量均可
 	dp[0] = 0;
 	for (int i = 0; i < nums.size(); i++) {
 		for (int j = 0; j <= n; j++) {

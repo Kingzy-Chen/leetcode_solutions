@@ -8,6 +8,7 @@ int maxProfit(int k, vector<int>& prices)
 {
 	int n = prices.size();
 
+	// 类似于 123-买卖股票的最佳时机
 	// dp[i][0] 表示第 i 天不持有股票, 且从未买卖股票
 	// dp[i][j] 表示第 i 天持有股票, 第 j 次买入
 	// dp[i][j + 1] 表示第 i 天不持有股票, 第 j 次卖出

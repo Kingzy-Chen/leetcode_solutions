@@ -35,7 +35,7 @@ int longestCommonSubsequence(string text1, string text2)
 			if (text1[i - 1] == text2[j - 1]) {
 				dp[i][j] = dp[i - 1][j - 1] + 1;
 			}
-			// 否则用周围元素递推
+			// 否则用左方和上方元素递推
 			else {
 				dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
 			}

@@ -4,18 +4,17 @@
 using namespace std;
 
 /*
-	子序列: 删除（或不删除）数组中的元素而不改变其余元素的顺序 (不要求连续)
+	子序列: 删除或不删除数组中的元素而不改变其余元素的顺序 (不要求连续)
 	nums[] = {10 9 2 5 3 7 101 18}
 	dp[] = {1 1 1 2 2 3 4 4}
 */
-
 
 int lengthOfLIS(vector<int>& nums) 
 {
 	int n = nums.size();
 	int maxLength = INT_MIN;
 
-	// dp[i] 表示 i 之前包括 i 的以 nums[i] 结尾的最长递增子序列的长度 (注意是结尾, 子序列必定包含 nums[i])
+	// dp[i] 表示 i 之前 (包括 i) 的以 nums[i] 结尾的最长递增子序列的长度 (注意是结尾, 子序列必定包含 nums[i])
 	vector<int> dp(n, 1);
 
 	for (int i = 1; i < n; i++) {

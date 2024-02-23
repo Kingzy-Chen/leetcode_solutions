@@ -55,7 +55,7 @@ TreeNode* initTree(vector<int>& nums)
 // 更新二叉树的节点状态
 int update(TreeNode* cur)
 {
-	// 保证叶子节点是无覆盖状态
+	// 保证叶子节点是有覆盖状态
 	if (cur == nullptr) return 2;
 
 	int leftValue = update(cur->left);
